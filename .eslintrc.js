@@ -12,7 +12,8 @@ module.exports = {
   extends: ['plugin:vue/recommended','eslint:recommended'],
   rules:
   {
-    indent: ["error", "tab"]
+    indent: ["error", "tab"],
+    'no-console': 'off',
   }
   // add your custom rules here
   //it is base on https://github.com/vuejs/eslint-config-vue
