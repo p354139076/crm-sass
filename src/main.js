@@ -1,10 +1,13 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
+import 'normalize.css/normalize.css' // A modern alternative to CSS resets
 import i18n from './lang' // Internationalization
 import ElementUI from 'element-ui'
+import 'element-ui/lib/theme-chalk/index.css'
+import './errorLog' // error log
 import './icons' // icon
-import './permission'
+import './permission' // permission control
 import store from './store'
 Vue.use(ElementUI, {
 	size: 'medium', // set element-ui default size
