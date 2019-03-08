@@ -3,6 +3,8 @@ import App from './App.vue'
 import router from './router'
 import i18n from './lang' // Internationalization
 import ElementUI from 'element-ui'
+import './icons' // icon
+import './permission'
 import store from './store'
 Vue.use(ElementUI, {
 	size: 'medium', // set element-ui default size
