@@ -80,6 +80,7 @@ export default {
 		any: '随便填',
 		thirdparty: '第三方登录',
 		thirdpartyTips: '本地不能模拟，请结合自己业务进行模拟！！！',
+		userTypeList:[{userTypeName:'运营平台',userType:'1'},{userTypeName:'渠道商',userType:'2'}],
 	},
 	documentation: {
 		documentation: '文档',

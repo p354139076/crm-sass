@@ -79,7 +79,8 @@ export default {
 		password: 'Password',
 		any: 'any',
 		thirdparty: 'Or connect with',
-		thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !'
+		thirdpartyTips: 'Can not be simulated on local, so please combine you own business simulation! ! !',
+		userTypeList:[{userTypeName:'运营平台',userType:'1'},{userTypeName:'渠道商',userType:'2'}],
 	},
 	documentation: {
 		documentation: 'Documentation',

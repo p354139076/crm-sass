@@ -1,5 +1,9 @@
 <template>
   <div class="login-container">
+    <img
+      class="logo"
+      src="/"
+    >
     <el-form
       ref="loginForm"
       :model="loginForm"
@@ -13,11 +17,20 @@
           {{ $t('login.title') }}
         </h3>
       </div>
-
+      <el-form-item prop="userType">
+        <el-select
+          v-model="loginForm.userType"
+          placeholder="请选择"
+        >
+          <el-option
+            v-for="item in $t('login.userTypeList')"
+            :key="item.userTypeName"
+            :label="item.userTypeName"
+            :value="item.userType"
+          />
+        </el-select>
+      </el-form-item>
       <el-form-item prop="username">
-        <span class="svg-container">
-          <svg-icon icon-class="user" />
-        </span>
         <el-input
           v-model="loginForm.username"
           :placeholder="$t('login.username')"
@@ -28,9 +41,6 @@
       </el-form-item>
 
       <el-form-item prop="password">
-        <span class="svg-container">
-          <svg-icon icon-class="password" />
-        </span>
         <el-input
           v-model="loginForm.password"
           :type="passwordType"
@@ -117,7 +127,8 @@ export default {
 		return {
 			loginForm: {
 				username: 'admin',
-				password: '1111111'
+				password: '1111111',
+				userType:'1'
 			},
 			loginRules: {
 				username: [{ required: true, trigger: 'blur', validator: validateUsername }],
@@ -194,7 +205,7 @@ export default {
   /* Detail see https://github.com/PanJiaChen/vue-element-admin/pull/927 */
 
   $bg:#283443;
-  $light_gray:#eee;
+  $light_gray:#888888;
   $cursor: #fff;
 
   @supports (-webkit-mask: none) and (not (cater-color: $cursor)) {
@@ -220,7 +231,7 @@ export default {
         padding: 12px 5px 12px 15px;
         color: $light_gray;
         height: 47px;
-        caret-color: $cursor;
+        caret-color: $cursor;             
         &:-webkit-autofill {
           -webkit-box-shadow: 0 0 0px 1000px $bg inset !important;
           -webkit-text-fill-color: $cursor !important;
@@ -233,14 +244,33 @@ export default {
       border-radius: 5px;
       color: #454545;
     }
+    .login-form{
+      .el-select{
+        width: 100%;
+        .el-input{
+          width: 100%;
+        }
+      }
+      .el-form-item__content{
+        background-color: #FFFFFF;
+        border-radius: 4px;
+      }
+    }
   }
+  
 </style>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-$bg:#2d3a4b;
+$bg:#F0F0F2;
 $dark_gray:#889aa4;
-$light_gray:#eee;
+$light_gray:#4D4D4D;
 
+.logo{
+  display: block;
+  margin:0 auto;
+  width:170px;
+  height: 170px;
+}
 .login-container {
   min-height: 100%;
   width: 100%;
@@ -250,13 +280,13 @@ $light_gray:#eee;
     position: relative;
     width: 520px;
     max-width: 100%;
-    padding: 160px 35px 0;
+    padding: 20px 35px 0;
     margin: 0 auto;
     overflow: hidden;
   }
   .tips {
     font-size: 14px;
-    color: #fff;
+    color: #889aa4;
     margin-bottom: 10px;
     span {
       &:first-of-type {
@@ -274,11 +304,11 @@ $light_gray:#eee;
   .title-container {
     position: relative;
     .title {
-      font-size: 26px;
+      font-size: 30px;
       color: $light_gray;
       margin: 0px auto 40px auto;
       text-align: center;
-      font-weight: bold;
+      font-weight: normal;
     }
     .set-language {
       color: #fff;
