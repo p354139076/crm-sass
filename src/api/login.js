@@ -1,14 +1,14 @@
 import request from '@/utils/request'
 
-export function loginByUsername(usertype,username, password,code) {
+export function loginByUsername(usertype,loginname, loginpwd,code) {
 	const data = {
 		usertype,
-		username,
-		password,
+		loginname,
+		loginpwd,
 		code
 	}
 	return request({
-		url: '/login/login',
+		url: '/sso/login',
 		method: 'post',
 		data
 	})

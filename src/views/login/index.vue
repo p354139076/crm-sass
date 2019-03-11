@@ -68,12 +68,12 @@
 
       <div style="position:relative">
         <div class="tips">
-          <span>{{ $t('login.username') }} : admin</span>
+          <span>{{ $t('login.username') }} : jlonadmin</span>
           <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
         </div>
         <div class="tips">
           <span style="margin-right:18px;">
-            {{ $t('login.username') }} : editor
+            {{ $t('login.username') }} : 123456
           </span>
           <span>{{ $t('login.password') }} : {{ $t('login.any') }}</span>
         </div>
@@ -128,7 +128,8 @@ export default {
 			loginForm: {
 				username: 'admin',
 				password: '1111111',
-				userType:'1'
+				userType:'1',
+				code:0
 			},
 			loginRules: {
 				username: [{ required: true, trigger: 'blur', validator: validateUsername }],

@@ -3,8 +3,9 @@
  */
 
 export function isvalidUsername(str) {
-	const valid_map = ['admin', 'editor']
-	return valid_map.indexOf(str.trim()) >= 0
+	// const valid_map = ['admin', 'editor']
+	// return valid_map.indexOf(str.trim()) >= 0
+	return str
 }
 
 /* 合法uri*/
@@ -37,6 +38,6 @@ export function validateAlphabets(str) {
  * @returns {boolean}
  */
 export function validateEmail(email) {
-	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+	const re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
 	return re.test(email)
 }
