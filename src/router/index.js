@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 /* Layout */
-// import Layout from '@/views/layout/Layout'
+import Layout from '@/views/layout/Layout'
 
 // /* Router Modules */
 // import componentsRouter from './modules/components'
@@ -63,19 +63,19 @@ export const constantRouterMap = [
 	// 	component: () => import('@/views/errorPage/401'),
 	// 	hidden: true
 	// },
-	// {
-	// 	path: '',
-	// 	component: Layout,
-	// 	redirect: 'dashboard',
-	// 	children: [
-	// 		{
-	// 			path: 'dashboard',
-	// 			component: () => import('@/views/dashboard/index'),
-	// 			name: 'Dashboard',
-	// 			meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
-	// 		}
-	// 	]
-	// },
+	{
+		path: '',
+		component: Layout,
+		redirect: 'dashboard',
+		children: [
+			{
+				path: 'dashboard',
+				component: () => import('@/views/dashboard/index'),
+				name: 'Dashboard',
+				meta: { title: 'dashboard', icon: 'dashboard', noCache: true }
+			}
+		]
+	},
 	// {
 	// 	path: '/documentation',
 	// 	component: Layout,
