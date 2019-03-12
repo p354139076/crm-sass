@@ -3,6 +3,7 @@ import Cookies from 'js-cookie'
 const TokenKey = 'Admin-Token'
 
 export function getToken() {
+	//找不到则返回字符串undefined，巨坑！
 	return Cookies.get(TokenKey)
 }
 

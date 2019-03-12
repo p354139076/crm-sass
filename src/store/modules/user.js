@@ -52,7 +52,7 @@ const user = {
 					const data = response.data
 					console.log(data);
 					commit('SET_TOKEN', data.data.access_token);
-					setToken(response.data.token)
+					setToken(data.data.access_token)
 					resolve()
 				}).catch(error => {
 					reject(error)
