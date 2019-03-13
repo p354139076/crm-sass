@@ -1,152 +1,98 @@
+<!--  -->
 <template>
-  <div class="navbar">
-    <hamburger :toggle-click="toggleSideBar" :is-active="sidebar.opened" class="hamburger-container"/>
-
-    <breadcrumb class="breadcrumb-container"/>
-
-    <div class="right-menu">
-      <template v-if="device!=='mobile'">
-        <error-log class="errLog-container right-menu-item"/>
-
-        <el-tooltip :content="$t('navbar.screenfull')" effect="dark" placement="bottom">
-          <screenfull class="screenfull right-menu-item"/>
-        </el-tooltip>
-
-        <el-tooltip :content="$t('navbar.size')" effect="dark" placement="bottom">
-          <size-select class="international right-menu-item"/>
-        </el-tooltip>
-
-        <lang-select class="international right-menu-item"/>
-
-        <el-tooltip :content="$t('navbar.theme')" effect="dark" placement="bottom">
-          <theme-picker class="theme-switch right-menu-item"/>
-        </el-tooltip>
-      </template>
-
-      <el-dropdown class="avatar-container right-menu-item" trigger="click">
-        <div class="avatar-wrapper">
-          <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar">
-          <i class="el-icon-caret-bottom"/>
+  <el-row>
+    <el-col :span="12">
+      <img
+        src="/"
+        class="logo"
+      >
+      <div class="title">
+        <span>渠道商管理平台</span>
+      </div>
+    </el-col>
+    <el-col
+      :span="12"
+    >
+      <div class="left-box">
+        <div class="userImg">
+          <img
+            src="#"
+          >
         </div>
-        <el-dropdown-menu slot="dropdown">
-          <router-link to="/">
-            <el-dropdown-item>
-              {{ $t('navbar.dashboard') }}
-            </el-dropdown-item>
-          </router-link>
-          <a target="_blank" href="https://github.com/PanJiaChen/vue-element-admin/">
-            <el-dropdown-item>
-              {{ $t('navbar.github') }}
-            </el-dropdown-item>
-          </a>
-          <el-dropdown-item divided>
-            <span style="display:block;" @click="logout">{{ $t('navbar.logOut') }}</span>
-          </el-dropdown-item>
-        </el-dropdown-menu>
-      </el-dropdown>
-    </div>
-  </div>
+        <div class="userName">
+          <div>渠道名称 </div>
+        </div>
+        <div class="logOut">
+          <span class="aliicon logoutIcon">&#xe619;</span>
+          <span>退出</span>
+        </div>
+      </div>
+    </el-col>
+  </el-row>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import Breadcrumb from '@/components/Breadcrumb'
-import Hamburger from '@/components/Hamburger'
-import ErrorLog from '@/components/ErrorLog'
-import Screenfull from '@/components/Screenfull'
-import SizeSelect from '@/components/SizeSelect'
-import LangSelect from '@/components/LangSelect'
-import ThemePicker from '@/components/ThemePicker'
-
 export default {
-  components: {
-    Breadcrumb,
-    Hamburger,
-    ErrorLog,
-    Screenfull,
-    SizeSelect,
-    LangSelect,
-    ThemePicker
-  },
-  computed: {
-    ...mapGetters([
-      'sidebar',
-      'name',
-      'avatar',
-      'device'
-    ])
-  },
-  methods: {
-    toggleSideBar() {
-      this.$store.dispatch('toggleSideBar')
-    },
-    logout() {
-      this.$store.dispatch('LogOut').then(() => {
-        location.reload()// In order to re-instantiate the vue-router object to avoid bugs
-      })
-    }
-  }
+	name:'Navbar',
+	data(){
+		return {
+
+		}
+	}
 }
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
-.navbar {
-  height: 50px;
-  line-height: 50px;
-  border-radius: 0px !important;
-  .hamburger-container {
-    line-height: 58px;
-    height: 50px;
+  .logoutIcon{
     float: left;
-    padding: 0 10px;
+    display: block;
+    width: 40px;
+    height: 40px;
   }
-  .breadcrumb-container{
+  .logo{
     float: left;
+    width: 200px;
+    height: 70px;
+    margin: 13px 16px 17px 30px;
   }
-  .errLog-container {
-    display: inline-block;
-    vertical-align: top;
+  .title{
+    float: left;
+    margin-top: 35px;
+    width: 225px;
+    height: 46px;
+    line-height: 46px;
+    color: rgba(245, 93, 84, 1);
+    font-size: 32px;
+    text-align: center;
   }
-  .right-menu {
+  .userImg{
+    float: left;
+    margin-top: 18px;
+    width: 60px;
+    height: 60px;
+  }
+  .userName{
+    float: left;
+    margin-top: 28px;
+    width: 161px;
+    height: 40px;
+    line-height: 32px;
+    color: rgba(16, 16, 16, 1);
+    font-size: 22px;
+    text-align: center;
+  }
+  .left-box{
     float: right;
-    height: 100%;
-    &:focus{
-     outline: none;
-    }
-    .right-menu-item {
-      display: inline-block;
-      margin: 0 8px;
-    }
-    .screenfull {
-      height: 20px;
-    }
-    .international{
-      vertical-align: top;
-    }
-    .theme-switch {
-      vertical-align: 15px;
-    }
-    .avatar-container {
-      height: 50px;
-      margin-right: 30px;
-      .avatar-wrapper {
-        margin-top: 5px;
-        position: relative;
-        .user-avatar {
-          cursor: pointer;
-          width: 40px;
-          height: 40px;
-          border-radius: 10px;
-        }
-        .el-icon-caret-bottom {
-          cursor: pointer;
-          position: absolute;
-          right: -20px;
-          top: 25px;
-          font-size: 12px;
-        }
-      }
-    }
   }
-}
+  .logOut{
+  float: left;
+  margin-top: 28px;
+  width: 85px;
+  font-weight: normal;
+  height: 40px;
+  line-height: 29px;
+  color: rgba(255, 87, 34, 1);
+  font-size: 20px;
+  text-align: center;
+  }
 </style>

@@ -3,22 +3,24 @@
     :class="classObj"
     class="app-wrapper"
   >
-    <div
-      v-if="device==='mobile'&&sidebar.opened"
-      class="drawer-bg"
-      @click="handleClickOutside"
-    />
-    <sidebar class="sidebar-container" />
-    <div class="main-container">
-      <navbar />
-      <tags-view />
-      <app-main />
-    </div>
+    <el-container>
+      <el-header class="navbar-container">
+        <navbar />
+      </el-header>
+      <el-container>
+        <el-aside class="sidebar-container">
+          <sidebar />
+        </el-aside>
+        <el-main class="main-container">
+          <app-main />
+        </el-main>
+      </el-container>
+    </el-container>
   </div>
 </template>
 
 <script>
-import { Navbar, Sidebar, AppMain, TagsView } from './components'
+import { Navbar, Sidebar, AppMain } from './components'
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
@@ -27,7 +29,6 @@ export default {
 		Navbar,
 		Sidebar,
 		AppMain,
-		TagsView
 	},
 	mixins: [ResizeMixin],
 	computed: {
@@ -56,6 +57,27 @@ export default {
 
 <style rel="stylesheet/scss" lang="scss" scoped>
   @import "~@/styles/mixin.scss";
+    .navbar-container {
+    height: 100px !important; 
+    background-color:#F8F8F8;
+  }
+  .sidebar-container{
+    margin-top: 32px;
+    margin-right: 28px;
+    margin-left: 28px;
+    height: 658px;
+    width: 232px !important;
+    line-height: 20px;
+    background-color: rgba(247, 247, 247, 1);
+    text-align: center;
+  }
+  .main-container{
+    margin-top: 32px;
+    width: 1126px;
+    line-height: 20px;
+    text-align: center;
+    border: 1px solid rgba(224, 224, 224, 1);
+  }
   .app-wrapper {
     @include clearfix;
     position: relative;

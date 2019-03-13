@@ -6,12 +6,13 @@
 
 <script>
 import { mapGetters } from 'vuex'
-
+import userAnylysis from '@/views/user_analysis'
 export default {
-	name: 'Dashboard',
+	name: 'HomePage',
+	components:{userAnylysis},
 	data() {
 		return {
-			currentRole: 'dashboard'
+			currentRole: 'userAnylysis'
 		}
 	},
 	computed: {

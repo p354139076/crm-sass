@@ -1,33 +1,51 @@
+<!--  -->
 <template>
-  <el-scrollbar wrap-class="scrollbar-wrapper">
-    <el-menu
-      :show-timeout="200"
-      :default-active="$route.path"
-      :collapse="isCollapse"
-      mode="vertical"
-      background-color="#304156"
-      text-color="#bfcbd9"
-      active-text-color="#409EFF"
+  <el-menu
+    class="barMenu"
+    text-color="#FFFFFF"
+  >
+    <el-submenu
+      v-for="(item,index) in itemList"
+      :key="index"
+      :index="index.toString()"
     >
-      <sidebar-item v-for="route in permission_routers" :key="route.path" :item="route" :base-path="route.path"/>
-    </el-menu>
-  </el-scrollbar>
+      <template slot="title">
+        <div>title</div>
+      </template>
+      <el-menu-item
+        v-for="(subMenu,subIndex) in item.children"
+        :key="subIndex"
+        :index="subIndex.toString()"
+      >
+        subMenu
+      </el-menu-item>
+    </el-submenu>
+  </el-menu>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
-import SidebarItem from './SidebarItem'
-
+import {loginTreeMenu} from '@/api/layout'
 export default {
-  components: { SidebarItem },
-  computed: {
-    ...mapGetters([
-      'permission_routers',
-      'sidebar'
-    ]),
-    isCollapse() {
-      return !this.sidebar.opened
-    }
-  }
+	name:'SideBar',
+	data(){
+		return {
+			itemList:[]
+		}
+	},
+	mounted(){
+		loginTreeMenu().then(response=>{
+			const data=response.data.data;
+			this.itemList=data;
+		});
+	},
+	methods:{
+    
+	}
 }
 </script>
+
+<style rel='stylesheet/scss' lang='scss' scoped>
+  .barMenu{
+    background-color: #F7F7F7;
+  }
+</style>
